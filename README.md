@@ -23,9 +23,10 @@ Small FastAPI + vanilla JS app for Azure Translator based content translation wi
 6. User can edit translated output before submit.
 7. Submit calls POST /api/submissions.
 8. Backend enforces rules:
-  - auto-translate must be enabled by admin
   - if source contains an img tag, alt-text review must be checked
 9. Submission is saved in SQLite and success is returned with submission_id.
+
+Auto-translate admin setting controls translation availability only. Manual edit + submit flow remains available.
 
 ## Folder Structure
 

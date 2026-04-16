@@ -1,7 +1,6 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 
-from app.services.admin_config_service import get_auto_translate_enabled
 from app.services.content_rules_service import source_contains_image_tag
 from app.services.submission_service import save_submission
 
@@ -23,12 +22,6 @@ class SubmissionResponse(BaseModel):
 
 @router.post("/submissions", response_model=SubmissionResponse)
 def submit_translation(request: SubmissionRequest) -> SubmissionResponse:
-    if not get_auto_translate_enabled():
-        raise HTTPException(
-            status_code=403,
-            detail="Submission is blocked because auto-translate is disabled by admin.",
-        )
-
     if source_contains_image_tag(request.source_text) and not request.alt_text_reviewed:
         raise HTTPException(
             status_code=400,

@@ -109,16 +109,16 @@ function getValidationStatusMessage() {
 		};
 	}
 
-	if (!state.autoTranslateEnabledByAdmin) {
-		return {
-			message: "Auto-Translate is disabled by admin.",
-			tone: "error",
-		};
-	}
-
 	if (!isImageReviewRequirementSatisfied()) {
 		return {
 			message: "Image detected. Confirm alt-text review to enable submit.",
+			tone: "info",
+		};
+	}
+
+	if (!state.autoTranslateEnabledByAdmin) {
+		return {
+			message: "Auto-Translate is disabled by admin. Manual submit is still available.",
 			tone: "info",
 		};
 	}
@@ -134,9 +134,6 @@ function getSubmissionBlockReason() {
 		return "Source and translated text are required before submit.";
 	}
 
-	if (!state.autoTranslateEnabledByAdmin) {
-		return "Submission is blocked because auto-translate is disabled by admin.";
-	}
 	if (!isImageReviewRequirementSatisfied()) {
 		return "Source contains an <img> tag. Confirm alt-text review before submit.";
 	}
