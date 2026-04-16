@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Azure AI Translation Workspace</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="container">
+    <header class="panel page-header">
+      <div>
+        <h1>AI-powered Translation Suggestion System</h1>
+        <p>This prototype illustrates a minimal end-to-end workflow for generating and validating translation suggestions using a configurable service layer, hash-based caching, and placeholder protection for structured content elements.</p>
+      </div>
+      <button id="openAdminPanelBtn" class="admin-panel-button" type="button">Settings</button>
+    </header>
+
+    <section class="panel form-grid">
+      <label for="sourceText">Source Content (English)</label>
+      <textarea id="sourceText" rows="8" placeholder="Paste source content with optional &lt;math&gt;, &lt;a href=&quot;&quot;&gt; and &lt;img alt=&quot;&quot;&gt; tags."></textarea>
+
+      <div class="field">
+        <label for="targetLanguage">Target Language</label>
+        <select id="targetLanguage">
+          <option value="ar">Arabic</option>
+          <option value="bn">Bengali</option>
+          <option value="de">German</option>
+          <option value="es">Spanish</option>
+          <option value="fr">French</option>
+          <option value="hi">Hindi</option>
+        </select>
+      </div>
+
+      <div class="button-row">
+        <button id="sampleContentBtn" type="button">Load Sample Content</button>
+        <button id="autoTranslateBtn" type="button">Auto-Translate</button>
+      </div>
+        <p id="autoTranslateStatus" class="status-text" aria-live="polite"></p>
+
+      <label for="translatedText">Translated Output (Editable)</label>
+      <textarea id="translatedText" rows="8" placeholder="Translated text will appear here."></textarea>
+
+      <label id="altTextReviewedContainer" class="checkbox-label" for="altTextReviewed" hidden>
+        <input id="altTextReviewed" type="checkbox">
+        I reviewed image alt-text translation.
+      </label>
+
+      <div class="submit-row">
+        <button id="submitBtn" type="button">Submit</button>
+      </div>
+    </section>
+
+    <div id="adminPanelModal" class="admin-modal hidden" aria-hidden="true">
+      <div id="adminPanelBackdrop" class="admin-modal-backdrop"></div>
+      <section class="admin-modal-card" role="dialog" aria-modal="true" aria-labelledby="adminPanelTitle">
+        <div class="admin-modal-header">
+          <h2 id="adminPanelTitle">Settings</h2>
+          <button id="closeAdminPanelBtn" class="close-modal-button" type="button" aria-label="Close admin panel">x</button>
+        </div>
+
+        <p class="admin-modal-subtitle">Configure automatic translation and language-provider settings.</p>
+
+        <div class="admin-settings-block">
+          <label class="admin-toggle-label" for="adminAutoTranslateEnabled">Enable Automatic Translation</label>
+          <input id="adminAutoTranslateEnabled" type="checkbox">
+        </div>
+
+        <div class="admin-settings-block">
+          <h3 class="admin-block-title">Language Provider Settings</h3>
+          <table class="provider-table">
+            <thead>
+              <tr>
+                <th>Language</th>
+                <th>Translation Provider</th>
+              </tr>
+            </thead>
+            <tbody id="providerSettingsBody"></tbody>
+          </table>
+
+          <div class="admin-modal-actions">
+            <button id="saveProviderSettingsBtn" type="button">Save Provider Settings</button>
+          </div>
+        </div>
+
+        <p id="adminPanelStatus" class="status-text" aria-live="polite"></p>
+      </section>
+    </div>
+
+    <div id="submissionSuccessModal" class="admin-modal hidden" aria-hidden="true">
+      <div id="submissionSuccessBackdrop" class="admin-modal-backdrop"></div>
+      <section class="admin-modal-card submission-modal-card" role="dialog" aria-modal="true" aria-labelledby="submissionSuccessTitle">
+        <div class="admin-modal-header">
+          <h2 id="submissionSuccessTitle">Submission Complete</h2>
+          <button id="closeSubmissionSuccessBtn" class="close-modal-button" type="button" aria-label="Close submission popup">x</button>
+        </div>
+
+        <p id="submissionSuccessMessage" class="status-text status-success submission-modal-message" aria-live="polite">
+          Submitted and stored in DB.
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

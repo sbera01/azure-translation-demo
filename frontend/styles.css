@@ -1,0 +1,272 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #f3f5f8;
+  color: #1e2530;
+}
+
+.container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+.panel {
+  background: #ffffff;
+  border: 1px solid #d8dfe8;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.admin-panel-button {
+  background: #0f766e;
+  border-color: #0f766e;
+  min-width: 130px;
+}
+
+.admin-panel-button:hover {
+  background: #0d5f58;
+}
+
+.form-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.field {
+  display: grid;
+  gap: 0.4rem;
+}
+
+textarea,
+select,
+button,
+input[type="checkbox"] {
+  font: inherit;
+}
+
+textarea,
+select {
+  width: 100%;
+  padding: 0.65rem;
+  border: 1px solid #c8d0db;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.button-row {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.submit-row {
+  display: flex;
+  justify-content: flex-end;
+}
+
+button {
+  padding: 0.6rem 0.9rem;
+  border: 1px solid #1d4ed8;
+  background: #2563eb;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #1d4ed8;
+}
+
+.submit-row button {
+  background: #0f766e;
+  border-color: #0f766e;
+}
+
+button:disabled {
+  background: #9aa9c2;
+  border-color: #8898b4;
+  cursor: not-allowed;
+}
+
+.status-text {
+  margin: 0;
+  min-height: 1.25rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #f2cc60;
+  background: #fff4ce;
+  color: #7a4d00;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.status-success {
+  border-color: #9bd9b7;
+  background: #e8f7ee;
+  color: #0f5e38;
+}
+
+.status-error {
+  border-color: #f1a8a8;
+  background: #ffecec;
+  color: #8f1e1e;
+}
+
+.admin-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+}
+
+.admin-modal.hidden {
+  display: none;
+}
+
+.admin-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(16, 24, 40, 0.55);
+}
+
+.admin-modal-card {
+  position: relative;
+  margin: 5vh auto;
+  width: min(900px, 95vw);
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #cfd8e3;
+  padding: 1.1rem;
+  box-shadow: 0 18px 35px rgba(17, 24, 39, 0.25);
+}
+
+.admin-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.admin-modal-header h2 {
+  margin: 0;
+}
+
+.close-modal-button {
+  min-width: 42px;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid #9aa9c2;
+  background: #eef2f8;
+  color: #1f2937;
+}
+
+.close-modal-button:hover {
+  background: #dce4f1;
+}
+
+.admin-modal-subtitle {
+  margin: 0.35rem 0 0.8rem;
+  color: #42556f;
+}
+
+.admin-settings-block {
+  border: 1px solid #d8dfe8;
+  border-radius: 10px;
+  padding: 0.85rem;
+  margin-bottom: 0.85rem;
+}
+
+.admin-toggle-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+}
+
+.admin-block-title {
+  margin: 0 0 0.6rem;
+}
+
+.provider-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #d8dfe8;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.provider-table th,
+.provider-table td {
+  text-align: left;
+  padding: 0.65rem;
+  border-bottom: 1px solid #e3e8ef;
+}
+
+.provider-table thead th {
+  background: #f5f7fb;
+  font-weight: 700;
+}
+
+.provider-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.provider-select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #c8d0db;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.admin-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.75rem;
+}
+
+.submission-modal-card {
+  width: min(520px, 92vw);
+}
+
+.submission-modal-message {
+  margin-top: 0.55rem;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.checkbox-label[hidden] {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .button-row {
+    flex-direction: column;
+  }
+
+  .submit-row {
+    justify-content: stretch;
+  }
+
+  .submit-row button {
+    width: 100%;
+  }
+}
