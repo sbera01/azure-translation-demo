@@ -21,11 +21,17 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+@app.get("/")
+def root():
+    return {"status": "running"}
 
 @app.get("/health")
-def health_check() -> dict[str, str]:
+def health_get():
     return {"status": "ok"}
 
+@app.head("/health")
+def health_head():
+    return {"status": "ok"}
 
 app.include_router(admin.router, prefix="/api")
 app.include_router(submission.router, prefix="/api")
